@@ -98,8 +98,10 @@ button{font-family:inherit;cursor:pointer}
   padding:1.05rem 1.6rem;border-radius:var(--r-sm);border:1px solid transparent;
   transition:background-color .2s ease,border-color .2s ease,transform .45s var(--e),box-shadow .45s var(--e);
   will-change:transform;
-  white-space:nowrap;
+  text-align:center;
 }
+/* CTA-urile scurte din hero/bare rămân pe un rând (sunt full-width pe mobil) */
+.hero .btnrow .btn,.page-hero .btnrow .btn,.cta-final .btnrow .btn,.mbar .btn,.header .btn,.nav-phone{white-space:nowrap}
 .btn svg{width:1.2em;height:1.2em;flex:none}
 .btn .wa-ic{color:var(--wa)}
 .btn--main{background:var(--ink);color:#fff}
@@ -144,8 +146,8 @@ a.text-link{font-weight:700;border-bottom:2px solid var(--brand)}
 .menu-btn{display:none;background:transparent;border:1px solid rgba(255,255,255,.25);border-radius:var(--r-sm);width:46px;height:46px;align-items:center;justify-content:center;color:#fff}
 .menu-btn svg{width:22px;height:22px}
 
-.mobile-menu{position:fixed;inset:0 0 0 auto;width:min(86vw,360px);background:var(--dark);color:#fff;z-index:var(--z-menu);transform:translateX(103%);visibility:hidden;transition:transform .55s var(--e),visibility .55s var(--e);box-shadow:var(--sh-lg);padding:1.4rem;display:flex;flex-direction:column;gap:.2rem;overflow-y:auto}
-.mobile-menu.open{transform:translateX(0);visibility:visible}
+.mobile-menu{position:fixed;inset:0 0 0 auto;width:min(86vw,360px);background:var(--dark);color:#fff;z-index:var(--z-menu);clip-path:inset(0 0 0 100%);visibility:hidden;transition:clip-path .5s var(--e),visibility .5s var(--e);box-shadow:var(--sh-lg);padding:1.4rem;display:flex;flex-direction:column;gap:.2rem;overflow-y:auto}
+.mobile-menu.open{clip-path:inset(0);visibility:visible}
 .mobile-menu .mm-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.4rem}
 .mobile-menu a.mm-link{padding:1rem .5rem;font-weight:600;color:#fff;font-size:1.12rem;border-bottom:1px solid var(--dark-line)}
 .mobile-menu a.mm-link.active{color:var(--brand)}
@@ -468,10 +470,15 @@ a.card:hover{border-color:rgba(238,127,23,.45);transform:translateY(-3px);box-sh
   .mbar{display:flex}
   body{padding-bottom:calc(80px + env(safe-area-inset-bottom))}
 }
+@media (max-width:380px){
+  .brand .word{font-size:1.28rem}
+  .nav{gap:.5rem}
+  .header .btn{padding:.7rem .9rem}
+}
 @media (max-width:620px){
   .footer-grid{grid-template-columns:1fr;gap:2rem}
-  .hero .btnrow > *,.page-hero .btnrow > *,.cta-final .btnrow > *,.band .btnrow > *{flex:1 1 100%}
-  .hero .btnrow .btn,.page-hero .btnrow .btn,.cta-final .btnrow .btn,.band .btnrow .btn{width:100%}
+  .hero .btnrow > *,.page-hero .btnrow > *,.cta-final .btnrow > *,.band .btnrow > *,.err .btnrow > *{flex:1 1 100%}
+  .hero .btnrow .btn,.page-hero .btnrow .btn,.cta-final .btnrow .btn,.band .btnrow .btn,.err .btnrow .btn{width:100%}
   .band{flex-direction:column;align-items:stretch}
   .tl .ticksrow span:nth-child(2n){display:none}
   .specbar .cell{padding:1.2rem 1rem}
